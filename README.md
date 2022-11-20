@@ -1,6 +1,9 @@
 # Getting Started with Weather App
 
-## Before proceding further please follow following steps:
+```diff
+-Before proceding further please read the following:
+```
+
 + This app requires different node.js application to run. Make sure you have downloaded before proceding further.
 You can find the node application here: https://github.com/xxThePunisherxx/Weather-app-Backend.
 
@@ -21,7 +24,6 @@ You may also see any lint errors in the console.
 ### `nodemon index.js`
 
 Runs backend server. This script will work only in Weather-app-Backend project directory.
-Open [http://localhost:6969](http://localhost:6969) to view it in your browser.
-Eg: http://localhost:6969/citySearch?city=kathmandu&temp=false
+
 
 
