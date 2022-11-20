@@ -1,0 +1,50 @@
+.container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.text {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+
+}
+
+.loading {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+.loading .lineBox {
+    padding: 2px;
+    width: 30%;
+    height: 20px;
+    border: 2px solid black;
+    border-radius: 20px;
+}
+
+.loading .lineBox .line {
+    height: 12px;
+    border-radius: 20px;
+    background: rgb(0, 0, 0);
+    animation: loadinga 5s forwards cubic-bezier(0, 0, 0, 0);
+}
+
+@keyframes loadinga {
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 100%;
+    }
+}

@@ -1,0 +1,174 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.disp {
+    background: rgb(241, 238, 238);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+}
+
+.local {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.local h1 {
+    font-size: 5rem;
+}
+
+.local h2 {
+    font-size: 2rem;
+}
+
+.todays {
+    display: flex;
+    flex-direction: column;
+}
+
+.headline,
+.subheading {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.headline {
+    padding: 30px;
+    margin-left: 80px;
+}
+
+.subheading {
+    padding: 10px;
+    width: 80%;
+    justify-content: space-evenly;
+}
+
+.headlineRight img {
+    width: 200px;
+    margin: 30px 90px;
+}
+
+.headlineLeft {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.headlineLeft h1 {
+    font-size: 9rem;
+}
+
+.headlineLeft h2 {
+    font-size: 3rem;
+}
+
+.headlineLeft h3 {
+    opacity: .3;
+}
+
+.times {
+    display: flex;
+    flex-direction: row;
+    width: 30%;
+    justify-content: space-between;
+}
+
+.times h1 {
+    font-size: 1.5rem;
+}
+
+.times .rise,
+.times .set {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.times .rise img {
+    width: 100px;
+}
+
+.times .set img {
+    width: 100px;
+}
+
+.forecastContents {
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+    justify-content: space-evenly;
+    padding: 20px;
+    margin-top: 50px;
+
+}
+
+.forecasts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-right: rgb(186, 183, 183) solid 2px;
+}
+
+
+.forecastContents h1 {
+    font-size: 1.8rem;
+}
+
+.forecastContents img {
+    width: 80px;
+}
+
+.minmax {
+    display: flex;
+    flex-direction: row;
+}
+
+.min {
+    opacity: .6;
+}
+
+.source {
+    width: 100%;
+    display: flex;
+    justify-content: right;
+}
+
+.source img {
+    width: 150px;
+    margin-left: 10px;
+}
+
+.source h3 {
+    opacity: .5;
+}
+
+.Btn {
+    margin: auto 0;
+    font-size: 2rem;
+    margin-left: 20px;
+    padding: 15px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.Btn:hover {
+    color: rgb(241, 238, 238);
+    border: 2px solid white;
+    border-radius: 5px;
+    background: black;
+    transition: all .3s ease-in;
+}
