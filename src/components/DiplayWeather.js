@@ -14,6 +14,7 @@ const DiplayWeather = (props) => {
 
 	function handleClick() {
 		props.function(true);
+		window.location.reload();
 	}
 	let Data = props.data;
 	let TimeZone = Data[0].TimeZone;
