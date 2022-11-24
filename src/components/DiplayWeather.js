@@ -36,10 +36,9 @@ const DiplayWeather = (props) => {
 	const now = DateTime.local();
 	let hour = "";
 	let minute = "";
-	let seconds = "";
+
 	now.hour < 10 ? (hour = `0${now.hour}`) : (hour = `${now.hour}`);
 	now.minute < 10 ? (minute = `0${now.minute}`) : (minute = `${now.minute}`);
-	now.second < 10 ? (seconds = `0${now.second}`) : (seconds = `${now.second}`);
 
 	setInterval(() => {
 		let now = DateTime.now().setZone(TimeZone); //get local  time using the timezone
