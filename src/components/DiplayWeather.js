@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./DisplayWeather.module.css";
 import { DateTime } from "luxon";
 
@@ -10,7 +10,6 @@ const DiplayWeather = (props) => {
 	let [MM, setMM] = useState("");
 	let [YY, setYY] = useState("");
 	let [Day, setDay] = useState("");
-	let [updatedAsOf, setUpdatedAsOf] = useState("");
 
 	function handleClick() {
 		props.function(true);
@@ -33,12 +32,6 @@ const DiplayWeather = (props) => {
 		Icon = "0" + Icon;
 	}
 	let ICONURL = `https://developer.accuweather.com/sites/default/files/${Icon}-s.png`;
-	const now = DateTime.local();
-	let hour = "";
-	let minute = "";
-
-	now.hour < 10 ? (hour = `0${now.hour}`) : (hour = `${now.hour}`);
-	now.minute < 10 ? (minute = `0${now.minute}`) : (minute = `${now.minute}`);
 
 	setInterval(() => {
 		let now = DateTime.now().setZone(TimeZone); //get local  time using the timezone
@@ -92,12 +85,7 @@ const DiplayWeather = (props) => {
 		now.minute < 10 ? setMin(`0${now.minute}`) : setMin(`${now.minute}`);
 		now.second < 10 ? setSec(`0${now.second}`) : setSec(now.second);
 	}, 1000);
-	function setUpdate(hour, minute) {
-		setUpdatedAsOf(`${hour}:${minute}`);
-	}
-	useEffect(() => {
-		setUpdate(hour, minute);
-	}, []);
+
 	return (
 		<div className={styles.disp}>
 			<div className={styles.container}>
@@ -120,7 +108,6 @@ const DiplayWeather = (props) => {
 								{Temperature.Value} &deg;{Temperature.Unit}
 							</h1>
 							<h2>{Text}</h2>
-							<h3>Updated {updatedAsOf}</h3>
 						</div>
 						<div className={styles.headlineRight}>
 							<img src={ICONURL} alt="" />
