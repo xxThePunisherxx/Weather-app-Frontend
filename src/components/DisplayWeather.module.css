@@ -176,6 +176,78 @@
     transition: all .3s ease-in;
 }
 
+@media only screen and (max-width: 1024px) {
+    .local {
+        margin-bottom: 20px;
+    }
+
+    .local h1 {
+        font-size: 4rem;
+    }
+
+    .local h2 {
+        font-size: 2.5rem;
+    }
+
+    .headlineLeft {
+        row-gap: 10px;
+    }
+
+    .headlineLeft h1 {
+        font-size: 6rem;
+    }
+
+    .headlineLeft h2 {
+        font-size: 3rem;
+    }
+
+    .headlineLeft h3 {
+        font-size: 1.3rem;
+        text-align: center;
+    }
+
+    .headline {
+        grid-template-columns: 1fr;
+        row-gap: 10px;
+    }
+
+    .subheading {
+        margin: 10px 0;
+        grid-template-columns: 1fr 1fr;
+        row-gap: 10px;
+    }
+
+    .subheading h2 {
+        font-size: 1.5rem;
+
+    }
+
+    .times {
+        margin: 10px 0;
+        grid-template-columns: 1fr 1fr;
+        row-gap: 10px;
+    }
+
+    .forecastContents {
+        grid-template-columns: 1fr 1fr;
+        margin: 50px 0;
+        row-gap: 15px;
+    }
+
+    .forecasts {
+
+        border: none;
+
+    }
+
+    .source {
+        margin-top: 30px;
+        margin-left: -50px;
+    }
+}
+
+
+
 @media only screen and (max-width: 600px) {
     .local {
         margin-bottom: 20px;
@@ -242,6 +314,78 @@
 
     .source {
         margin-top: 30px;
+        margin-left: -50px;
+    }
+}
+
+@media only screen and (max-width: 340px) {
+
+    .disp {
         margin-left: -20px;
+    }
+
+    .local h1 {
+        font-size: 1.5rem;
+
+    }
+
+    .local h2 {
+        font-size: 1.3rem;
+    }
+
+    .headlineLeft {
+        row-gap: 10px;
+    }
+
+    .headlineLeft h1 {
+        font-size: 4rem;
+    }
+
+    .headlineLeft h2 {
+        font-size: 2rem;
+    }
+
+    .headlineLeft h3 {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .headline {
+        grid-template-columns: 1fr;
+        row-gap: 10px;
+    }
+
+    .subheading {
+        margin: 10px 0;
+        grid-template-columns: 1fr;
+        row-gap: 10px;
+    }
+
+    .subheading h2 {
+        font-size: 1.5rem;
+
+    }
+
+    .times {
+        margin: 10px 0;
+        grid-template-columns: 1fr;
+        row-gap: 10px;
+    }
+
+    .forecastContents {
+        grid-template-columns: 1fr;
+        margin: 50px 0;
+        row-gap: 15px;
+    }
+
+    .forecasts {
+
+        border: none;
+
+    }
+
+    .source {
+        margin-top: 30px;
+        margin-left: -85px;
     }
 }

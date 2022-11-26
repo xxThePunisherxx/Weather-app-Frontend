@@ -8,12 +8,10 @@
     display: grid;
     height: 95vh;
     place-content: center;
-    background-color: rgb(241, 238, 238);
+    background-color: #dde1e7;
 
     overflow: hidden;
 }
-
-
 
 .form input {
     font-size: 2rem;
@@ -21,10 +19,17 @@
     border: 2px solid black;
     padding: 15px;
     margin: 10px 0px;
+    background-color: #dde1e734;
+
+}
+
+.form input:focus {
+    background-color: white;
 }
 
 .form button {
     font-size: 2rem;
+    background-color: #dde1e7;
     margin-left: 20px;
     padding: 15px;
     border: 2px solid black;
@@ -34,11 +39,11 @@
 }
 
 .form button:hover {
-    color: rgb(241, 238, 238);
-    border: 2px solid white;
+    color: #dde1e7;
+    border: 2px solid black;
     border-radius: 5px;
     background: black;
-    transition: all .3s ease-in;
+    transition: all .1s ease-in;
 }
 
 .container {
@@ -97,8 +102,6 @@ input:checked+.radioTile label {
     opacity: 1;
 }
 
-
-
 .tempselector {
     display: flex;
     flex-direction: row;
@@ -107,21 +110,22 @@ input:checked+.radioTile label {
 
 .tempselector h1 {
     margin-left: 20px;
+    font-size: 3rem;
+
 }
 
 .units {
     display: flex;
     flex-direction: row;
     margin-left: 50px;
+    margin-top: 10px;
 }
-
-
 
 .source {
     width: 100%;
     display: flex;
     justify-content: right;
-    background: rgb(241, 238, 238);
+    background: #dde1e7;
     height: 5vh;
     align-items: center;
 }
@@ -133,4 +137,26 @@ input:checked+.radioTile label {
 
 .source h3 {
     opacity: .5;
+}
+
+@media only screen and (max-width: 472px) {
+    .form input {
+        width: 200px;
+    }
+}
+
+@media only screen and (max-width: 346px) {
+    .form input {
+        width: 250px;
+        margin-left: 30px;
+    }
+
+    .form button {
+        margin-left: 30px;
+    }
+
+    .tempselector h1 {
+        margin-left: 30px;
+    }
+
 }

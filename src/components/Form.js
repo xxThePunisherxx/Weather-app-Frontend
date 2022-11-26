@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { WiCelsius, WiFahrenheit } from "react-icons/wi";
 import styles from "./Form.module.css";
 
@@ -24,7 +23,7 @@ const Form = (props) => {
 						<input name="cityname" type="text" placeholder="New York" required></input>
 						<button>Search</button>
 						<div className={styles.tempselector}>
-							<h1>Unit Selector</h1>
+							<h1>Unit </h1>
 							<div className={styles.units}>
 								{/* for celclus */}
 								<div className={styles.inputContainer}>
