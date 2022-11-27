@@ -3,6 +3,60 @@ import styles from "./DisplayWeather.module.css";
 import { DateTime } from "luxon";
 
 const DiplayWeather = (props) => {
+	function handleClick() {
+		// reset button
+		props.function(true);
+		window.location.reload();
+	}
+	function dayOfWeek(d, m, y) {
+		// return name of the day of week of provided inputs
+		d = parseInt(d, 10);
+		m = parseInt(m, 10);
+		y = parseInt(y, 10);
+		let t = [0, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4];
+		y -= m < 3 ? 1 : 0;
+		let Day = Math.round((y + y / 4 - y / 100 + y / 400 + t[m - 1] + d) % 7); // not sure how this works but it works. ≧◉◡◉≦
+		switch (Day) {
+			case 0:
+				return "Sunday";
+
+			case 1:
+				return "Monday";
+
+			case 2:
+				return "Tuesday";
+
+			case 3:
+				return "Wednesday";
+
+			case 4:
+				return "Thursday";
+
+			case 5:
+				return "Friday";
+
+			case 6:
+				return "Saturday";
+
+			default:
+				console.log("Error form get day of week ");
+		}
+	}
+	function getMonthName(month) {
+		// return month Name
+		const d = new Date();
+		d.setMonth(month - 1);
+		const monthName = d.toLocaleString("default", { month: "long" });
+		return monthName;
+	}
+	function formattNumbers(second, minute, hour, day, year) {
+		day < 10 ? setDD(`0${day}`) : setDD(day);
+		year < 10 ? setYY(`0${year}`) : setYY(year);
+		hour < 10 ? setHr(`0${hour}`) : setHr(`${hour}`);
+		minute < 10 ? setMin(`0${minute}`) : setMin(`${minute}`);
+		second < 10 ? setSec(`0${second}`) : setSec(second);
+	}
+
 	let [hr, setHr] = useState("");
 	let [min, setMin] = useState("");
 	let [sec, setSec] = useState("");
@@ -10,11 +64,6 @@ const DiplayWeather = (props) => {
 	let [MM, setMM] = useState("");
 	let [YY, setYY] = useState("");
 	let [Day, setDay] = useState("");
-
-	function handleClick() {
-		props.function(true);
-		window.location.reload();
-	}
 	let Data = props.data;
 	let TimeZone = Data[0].TimeZone;
 	let City = Data[0].City;
@@ -35,55 +84,9 @@ const DiplayWeather = (props) => {
 
 	setInterval(() => {
 		let now = DateTime.now().setZone(TimeZone); //get local  time using the timezone
-		function dayOfWeek(d, m, y) {
-			// function to get day of the week using the date
-			d = parseInt(d, 10);
-			m = parseInt(m, 10);
-			y = parseInt(y, 10);
-			let t = [0, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4];
-			y -= m < 3 ? 1 : 0;
-			return (y + y / 4 - y / 100 + y / 400 + t[m - 1] + d) % 7;
-		}
-		let Day = Math.round(dayOfWeek(now.day, now.month, now.year));
-		switch (Day) {
-			case 0:
-				setDay("Sunday, ");
-				break;
-			case 1:
-				setDay("Monday, ");
-				break;
-			case 2:
-				setDay("Tuesday, ");
-				break;
-			case 3:
-				setDay("Wednesday, ");
-				break;
-			case 4:
-				setDay("Thursday, ");
-				break;
-			case 5:
-				setDay("Friday, ");
-				break;
-			case 6:
-				setDay("Saturday, ");
-				break;
-			default:
-				console.log("Error");
-		}
-		function getMonthName(month) {
-			// get month Name
-			const d = new Date();
-			d.setMonth(month - 1);
-			const monthName = d.toLocaleString("default", { month: "long" });
-			return monthName;
-		}
-		// // add 0 in front if the value is less than 10
-		now.day < 10 ? setDD(`0${now.day}`) : setDD(now.day);
+		setDay(`${dayOfWeek(now.day, now.month, now.year)}, `);
 		setMM(getMonthName(now.month));
-		now.year < 10 ? setYY(`0${now.year}`) : setYY(now.year);
-		now.hour < 10 ? setHr(`0${now.hour}`) : setHr(`${now.hour}`);
-		now.minute < 10 ? setMin(`0${now.minute}`) : setMin(`${now.minute}`);
-		now.second < 10 ? setSec(`0${now.second}`) : setSec(now.second);
+		formattNumbers(now.second, now.minute, now.hour, now.day, now.year); // add 0 in front if the value is less than 10
 	}, 1000);
 
 	return (
@@ -140,16 +143,6 @@ const DiplayWeather = (props) => {
 				</div>
 				<div className={styles.forecastContents}>
 					{Data.map((DailyData) => {
-						function dayOfWeek(d, m, y) {
-							// function to get day of the week using the date
-							d = parseInt(d, 10);
-							m = parseInt(m, 10);
-							y = parseInt(y, 10);
-							let t = [0, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4];
-							y -= m < 3 ? 1 : 0;
-							return (y + y / 4 - y / 100 + y / 400 + t[m - 1] + d) % 7;
-						}
-
 						let { DayForecast, Date, Temperature } = DailyData;
 						let Icon = DayForecast.Icon;
 						let Text = DayForecast.IconPhrase;
@@ -158,33 +151,7 @@ const DiplayWeather = (props) => {
 						let year = Date.substr(0, 4);
 						let month = Date.substr(5, 2);
 						let day = Date.substr(8, 2);
-						let DayName = "";
-						let DayNum = Math.round(dayOfWeek(day, month, year));
-						switch (DayNum) {
-							case 0:
-								DayName = "Sunday";
-								break;
-							case 1:
-								DayName = "Monday";
-								break;
-							case 2:
-								DayName = "Tuesday ";
-								break;
-							case 3:
-								DayName = "Wednesday";
-								break;
-							case 4:
-								DayName = "Thursday";
-								break;
-							case 5:
-								DayName = "Friday";
-								break;
-							case 6:
-								DayName = "Saturday";
-								break;
-							default:
-								console.log("Error");
-						}
+						let DayName = dayOfWeek(day, month, year);
 						if (Icon < 10) {
 							Icon = "0" + Icon;
 						}
