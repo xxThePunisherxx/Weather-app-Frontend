@@ -4,46 +4,17 @@ import { DateTime } from "luxon";
 
 const DiplayWeather = (props) => {
 	function handleClick() {
-		// reset button
+		//! ------------------------------------------------------------- reset button ---------------------------------------------------------------
 		props.function(true);
 		window.location.reload();
 	}
-	function dayOfWeek(d, m, y) {
-		// return name of the day of week of provided inputs
-		d = parseInt(d, 10);
-		m = parseInt(m, 10);
-		y = parseInt(y, 10);
-		let t = [0, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4];
-		y -= m < 3 ? 1 : 0;
-		let Day = Math.round((y + y / 4 - y / 100 + y / 400 + t[m - 1] + d) % 7); // not sure how this works but it works. ≧◉◡◉≦
-		switch (Day) {
-			case 0:
-				return "Sunday";
 
-			case 1:
-				return "Monday";
-
-			case 2:
-				return "Tuesday";
-
-			case 3:
-				return "Wednesday";
-
-			case 4:
-				return "Thursday";
-
-			case 5:
-				return "Friday";
-
-			case 6:
-				return "Saturday";
-
-			default:
-				console.log("Error form get day of week ");
-		}
+	function getDayOfWeek(day, month, year) {
+		const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+		const date = new Date(year, month - 1, day);
+		return daysOfWeek[date.getDay()];
 	}
 	function getMonthName(month) {
-		// return month Name
 		const d = new Date();
 		d.setMonth(month - 1);
 		const monthName = d.toLocaleString("default", { month: "long" });
@@ -84,7 +55,7 @@ const DiplayWeather = (props) => {
 
 	setInterval(() => {
 		let now = DateTime.now().setZone(TimeZone); //get local  time using the timezone
-		setDay(`${dayOfWeek(now.day, now.month, now.year)}, `);
+		setDay(`${getDayOfWeek(now.day, now.month, now.year)}, `);
 		setMM(getMonthName(now.month));
 		formattNumbers(now.second, now.minute, now.hour, now.day, now.year); // add 0 in front if the value is less than 10
 	}, 1000);
@@ -151,7 +122,7 @@ const DiplayWeather = (props) => {
 						let year = Date.substr(0, 4);
 						let month = Date.substr(5, 2);
 						let day = Date.substr(8, 2);
-						let DayName = dayOfWeek(day, month, year);
+						let DayName = getDayOfWeek(day, month, year);
 						if (Icon < 10) {
 							Icon = "0" + Icon;
 						}
@@ -174,6 +145,7 @@ const DiplayWeather = (props) => {
 	);
 };
 const Individual = (props) => {
+	// ! --------------------------------------------------- Daily Forecast Cards ---------------------------------------------------------------------------
 	return (
 		<div className={styles.forecasts}>
 			<h1>{props.day}</h1>
